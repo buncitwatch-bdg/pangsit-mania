@@ -15,7 +15,7 @@ const youtubeEmbedUrl = "https://www.youtube.com/embed/6nc0T4Hyjfo";
 import '../styles/global.css';
 ---
 
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,12 +23,22 @@ import '../styles/global.css';
 </head>
 <body class="bg-amber-50/30 text-gray-900 font-sans antialiased">
 
-  <!-- NAVBAR STICKY -->
+  <!-- NAVBAR STICKY WITH ANCHOR MENU -->
   <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-3 px-4 md:px-8 flex justify-between items-center">
     <div class="flex items-center gap-3">
       <img src="assets/pangsit-mania-logo.webp" alt="Logo Pangsit Mania" class="w-10 h-10 rounded-full shadow" />
       <span class="font-extrabold text-lg text-red-600 tracking-tight">PANGSIT MANIA</span>
     </div>
+
+    <!-- Navigation Anchor Links -->
+    <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
+      <a href="#tentang" class="hover:text-red-600 transition">Tentang</a>
+      <a href="#produk" class="hover:text-red-600 transition">Produk</a>
+      <a href="#cara-pesan" class="hover:text-red-600 transition">Cara Pesan</a>
+      <a href="#keunggulan" class="hover:text-red-600 transition">Keunggulan</a>
+      <a href="#mitra" class="hover:text-red-600 transition">Mitra B2B</a>
+    </div>
+
     <a href={waLinkTanya} target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs md:text-sm px-4 py-2 rounded-full transition">
       💬 Tanya WA
     </a>
@@ -47,7 +57,7 @@ import '../styles/global.css';
       
       <!-- CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-3 pt-2">
-        <a href="#pesan-matang" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3.5 rounded-xl text-center shadow-lg shadow-red-200 transition">
+        <a href="#cara-pesan" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3.5 rounded-xl text-center shadow-lg shadow-red-200 transition">
           🔥 Pesan Pangsit Matang
         </a>
         <a href={shopeeFrozen} target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-3.5 rounded-xl text-center shadow-lg shadow-amber-100 transition">
@@ -73,7 +83,7 @@ import '../styles/global.css';
   </section>
 
   <!-- 2. KENALAN SECTION -->
-  <section class="bg-[#E53935] text-white py-16 px-4">
+  <section id="tentang" class="bg-[#E53935] text-white py-16 px-4 scroll-mt-20">
     <div class="max-w-4xl mx-auto text-center space-y-4">
       <h2 class="text-2xl md:text-4xl font-extrabold">Kenalan dengan Pangsit Mania</h2>
       <p class="text-red-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
@@ -97,7 +107,7 @@ import '../styles/global.css';
   </section>
 
   <!-- 3. PRODUK SIGNATURE -->
-  <section class="max-w-6xl mx-auto px-4 py-16">
+  <section id="produk" class="max-w-6xl mx-auto px-4 py-16 scroll-mt-20">
     <div class="text-center space-y-2 mb-12">
       <h2 class="text-3xl font-extrabold">Pilih Pangsit Signature Favoritmu</h2>
       <p class="text-gray-500">Dibuat dari bahan pilihan dengan isian berdaging tebal</p>
@@ -153,7 +163,7 @@ import '../styles/global.css';
   </section>
 
   <!-- 4. DUA CARA MENIKMATI -->
-  <section id="pesan-matang" class="max-w-6xl mx-auto px-4 py-12">
+  <section id="cara-pesan" class="max-w-6xl mx-auto px-4 py-12 scroll-mt-20">
     <div class="bg-amber-100/50 rounded-3xl p-6 md:p-10 border border-amber-200">
       <h2 class="text-2xl md:text-3xl font-black text-center mb-8">Mau Langsung Makan atau Stok di Rumah?</h2>
       
@@ -182,7 +192,7 @@ import '../styles/global.css';
             <p class="text-sm text-gray-600 mb-6">Cocok untuk stok camilan atau makanan praktis keluarga di rumah. Tinggal goreng/rebus beberapa menit!</p>
           </div>
           <a href={shopeeFrozen} target="_blank" class="block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg text-center text-sm transition">
-            🛍️️ Beli Frozen di Shopee
+            🛍️ Beli Frozen di Shopee
           </a>
         </div>
       </div>
@@ -190,7 +200,7 @@ import '../styles/global.css';
   </section>
 
   <!-- 5. KENAPA PANGSIT MANIA -->
-  <section class="max-w-6xl mx-auto px-4 py-16">
+  <section id="keunggulan" class="max-w-6xl mx-auto px-4 py-16 scroll-mt-20">
     <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-10">Kenapa Harus Pangsit Mania?</h2>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
       <div class="p-5 bg-white rounded-xl border border-gray-100">
@@ -217,7 +227,7 @@ import '../styles/global.css';
   </section>
 
   <!-- 6. B2B / MITRA -->
-  <section class="max-w-6xl mx-auto px-4 py-12">
+  <section id="mitra" class="max-w-6xl mx-auto px-4 py-12 scroll-mt-20">
     <div class="bg-gray-900 text-white rounded-3xl p-8 md:p-12 text-center md:flex md:justify-between md:items-center">
       <div class="md:text-left mb-6 md:mb-0 max-w-xl">
         <h2 class="text-2xl font-bold">Punya Toko atau Ingin Jualan Pangsit?</h2>
