@@ -105,36 +105,49 @@ import '../styles/global.css';
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
       <!-- Card Produk 1 -->
-      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col justify-between">
-        <img src="assets/ayam-moza-cheese.webp" alt="Ayam Mozza" class="rounded-xl w-full h-36 md:h-48 object-cover mb-3" />
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col justify-between cursor-pointer group hover:shadow-md transition" onclick="openModal('assets/ayam-moza-cheese.webp', 'Ayam Mozzarella')">
+        <img src="assets/ayam-moza-cheese.webp" alt="Ayam Mozza" class="rounded-xl w-full h-36 md:h-48 object-cover mb-3 group-hover:scale-105 transition duration-300" />
         <div>
           <h3 class="font-bold text-gray-800">Ayam Mozzarella</h3>
           <p class="text-xs text-gray-500 mt-1">Gurihnya ayam berpadu mozzarella lumer.</p>
         </div>
       </div>
       <!-- Card Produk 2 -->
-      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col justify-between">
-        <img src="assets/ayam-bawang-seaweed.webp" alt="Ayam Bawang" class="rounded-xl w-full h-36 md:h-48 object-cover mb-3" />
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col justify-between cursor-pointer group hover:shadow-md transition" onclick="openModal('assets/ayam-bawang-seaweed.webp', 'Ayam Bawang')">
+        <img src="assets/ayam-bawang-seaweed.webp" alt="Ayam Bawang" class="rounded-xl w-full h-36 md:h-48 object-cover mb-3 group-hover:scale-105 transition duration-300" />
         <div>
           <h3 class="font-bold text-gray-800">Ayam Bawang</h3>
           <p class="text-xs text-gray-500 mt-1">Aroma bawang harum lembut di setiap gigitan.</p>
         </div>
       </div>
       <!-- Card Produk 3 -->
-      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col justify-between">
-        <img src="assets/ayam-pedas-balado.webp" alt="Ayam Pedas" class="rounded-xl w-full h-36 md:h-48 object-cover mb-3" />
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col justify-between cursor-pointer group hover:shadow-md transition" onclick="openModal('assets/ayam-pedas-balado.webp', 'Ayam Pedas')">
+        <img src="assets/ayam-pedas-balado.webp" alt="Ayam Pedas" class="rounded-xl w-full h-36 md:h-48 object-cover mb-3 group-hover:scale-105 transition duration-300" />
         <div>
           <h3 class="font-bold text-gray-800">Ayam Pedas</h3>
           <p class="text-xs text-gray-500 mt-1">Sensasi gurih pedas pas yang bikin merem melek.</p>
         </div>
       </div>
       <!-- Card Produk 4 -->
-      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col justify-between">
-        <img src="assets/ayam-jamur-bbq.webp" alt="Ayam Jamur" class="rounded-xl w-full h-36 md:h-48 object-cover mb-3" />
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col justify-between cursor-pointer group hover:shadow-md transition" onclick="openModal('assets/ayam-jamur-bbq.webp', 'Ayam Jamur')">
+        <img src="assets/ayam-jamur-bbq.webp" alt="Ayam Jamur" class="rounded-xl w-full h-36 md:h-48 object-cover mb-3 group-hover:scale-105 transition duration-300" />
         <div>
           <h3 class="font-bold text-gray-800">Ayam Jamur</h3>
           <p class="text-xs text-gray-500 mt-1">Kombinasi tekstur jamur dan daging ayam juicy.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- MODAL POP UP GAMBAR (FULL IMAGE / FULL ASPECT) -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex justify-center items-center p-4" onclick="closeModal()">
+      <div class="relative bg-white rounded-2xl max-w-xl w-full p-4 md:p-6 overflow-hidden shadow-2xl flex flex-col items-center" onclick="event.stopPropagation()">
+        <button onclick="closeModal()" class="absolute top-3 right-3 bg-gray-100 hover:bg-gray-200 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center font-bold transition z-10">
+          ✕
+        </button>
+        <div class="w-full max-h-[75vh] flex justify-center items-center bg-gray-50 rounded-xl overflow-hidden mb-3">
+          <img id="modalImage" src="" alt="" class="max-w-full max-h-[75vh] w-auto h-auto object-contain rounded-xl" />
+        </div>
+        <h3 id="modalTitle" class="text-xl font-bold text-gray-900 text-center"></h3>
       </div>
     </div>
   </section>
@@ -169,7 +182,7 @@ import '../styles/global.css';
             <p class="text-sm text-gray-600 mb-6">Cocok untuk stok camilan atau makanan praktis keluarga di rumah. Tinggal goreng/rebus beberapa menit!</p>
           </div>
           <a href={shopeeFrozen} target="_blank" class="block w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg text-center text-sm transition">
-            🛍️ Beli Frozen di Shopee
+            🛍️️ Beli Frozen di Shopee
           </a>
         </div>
       </div>
@@ -233,6 +246,22 @@ import '../styles/global.css';
       </div>
     </div>
   </footer>
+
+  <!-- SCRIPT KONTROL POP UP -->
+  <script is:inline>
+    function openModal(imgSrc, title) {
+      document.getElementById('modalImage').src = imgSrc;
+      document.getElementById('modalImage').alt = title;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('imageModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+  </script>
 
 </body>
 </html>
