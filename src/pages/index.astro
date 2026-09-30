@@ -23,25 +23,45 @@ import '../styles/global.css';
 </head>
 <body class="bg-amber-50/30 text-gray-900 font-sans antialiased">
 
-  <!-- NAVBAR STICKY WITH ANCHOR MENU -->
-  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-3 px-4 md:px-8 flex justify-between items-center">
-    <div class="flex items-center gap-3">
-      <img src="assets/pangsit-mania-logo.webp" alt="Logo Pangsit Mania" class="w-10 h-10 rounded-full shadow" />
-      <span class="font-extrabold text-lg text-red-600 tracking-tight">PANGSIT MANIA</span>
+  <!-- NAVBAR STICKY WITH RESPONSIVE ANCHOR MENU -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <div class="py-3 px-4 md:px-8 flex justify-between items-center max-w-7xl mx-auto">
+      <div class="flex items-center gap-3">
+        <img src="assets/pangsit-mania-logo.webp" alt="Logo Pangsit Mania" class="w-10 h-10 rounded-full shadow" />
+        <span class="font-extrabold text-lg text-red-600 tracking-tight">PANGSIT MANIA</span>
+      </div>
+
+      <!-- Navigation Anchor Links (Desktop) -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
+        <a href="#tentang" class="hover:text-red-600 transition">Tentang</a>
+        <a href="#produk" class="hover:text-red-600 transition">Produk</a>
+        <a href="#cara-pesan" class="hover:text-red-600 transition">Cara Pesan</a>
+        <a href="#keunggulan" class="hover:text-red-600 transition">Keunggulan</a>
+        <a href="#mitra" class="hover:text-red-600 transition">Mitra B2B</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href={waLinkTanya} target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs md:text-sm px-4 py-2 rounded-full transition">
+          💬 Tanya WA
+        </a>
+
+        <!-- Hamburger Button (Mobile Only) -->
+        <button id="menuBtn" onclick="toggleMenu()" class="md:hidden p-2 text-gray-700 hover:text-red-600 focus:outline-none" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Navigation Anchor Links -->
-    <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
-      <a href="#tentang" class="hover:text-red-600 transition">Tentang</a>
-      <a href="#produk" class="hover:text-red-600 transition">Produk</a>
-      <a href="#cara-pesan" class="hover:text-red-600 transition">Cara Pesan</a>
-      <a href="#keunggulan" class="hover:text-red-600 transition">Keunggulan</a>
-      <a href="#mitra" class="hover:text-red-600 transition">Mitra B2B</a>
+    <!-- Dropdown Menu Mobile -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-100 px-4 py-3 space-y-3 font-semibold text-sm text-gray-700 shadow-lg">
+      <a href="#tentang" onclick="toggleMenu()" class="block py-1 hover:text-red-600 transition">Tentang</a>
+      <a href="#produk" onclick="toggleMenu()" class="block py-1 hover:text-red-600 transition">Produk</a>
+      <a href="#cara-pesan" onclick="toggleMenu()" class="block py-1 hover:text-red-600 transition">Cara Pesan</a>
+      <a href="#keunggulan" onclick="toggleMenu()" class="block py-1 hover:text-red-600 transition">Keunggulan</a>
+      <a href="#mitra" onclick="toggleMenu()" class="block py-1 hover:text-red-600 transition">Mitra B2B</a>
     </div>
-
-    <a href={waLinkTanya} target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs md:text-sm px-4 py-2 rounded-full transition">
-      💬 Tanya WA
-    </a>
   </nav>
 
   <!-- 1. HERO SECTION -->
@@ -257,8 +277,13 @@ import '../styles/global.css';
     </div>
   </footer>
 
-  <!-- SCRIPT KONTROL POP UP -->
+  <!-- SCRIPT KONTROL HAMBURGER MENU & POP UP -->
   <script is:inline>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
     function openModal(imgSrc, title) {
       document.getElementById('modalImage').src = imgSrc;
       document.getElementById('modalImage').alt = title;
